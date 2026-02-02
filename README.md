@@ -1,4 +1,4 @@
-## 🛒 Mart – Core Java Console Application
+## Mart – Core Java Console Application
 
 **Mart** is a simple **console-based Java application** built using **pure Core Java (OOP) concepts**.
 
@@ -54,7 +54,7 @@ src/
 
 ---
 
-## 👥 Roles
+## Roles
 
 * **Admin**
 
