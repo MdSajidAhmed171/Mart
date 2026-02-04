@@ -10,25 +10,26 @@ import com.mart.model.User;
 
 public class CartService {
 
-	private final List<Product> cartItems = new ArrayList<>();
+	private List<Product> cartItems = new ArrayList<>();
 	
 	public void addProduct(User user, Product product) {
-		if (user.getRole() != Role.ADMIN) {
-            throw new AccessDeniedException("Only ADMIN can add products");
+		if (user == null || product == null) {
+	        throw new IllegalArgumentException("User or product cannot be null");
+	    }
+		if (user.getRole() != Role.USER) {
+            throw new AccessDeniedException("Only User can purchase products");
         }
-		if(product == null) {
-			throw new IllegalArgumentException("Prodcut Can ot be Null");
-		}
 		cartItems.add(product);
 	}
-	public void removeProduct(Product product) {
-		if(product == null) {
-			throw new IllegalArgumentException("Prodcut Can ot be Null");
-		}
-		cartItems.remove(product);
+//	public void removeProduct(Product product) {
+//		cartItems.remove(product);
+//	}
+	public void removeProductById(long productId) {
+	    cartItems.removeIf(p -> p.getId() == productId);
 	}
+
 	
-	public List<Product> getAllProducts(){
+	public List<Product> getCartItems(){
 		return new ArrayList<>(cartItems);
 	}
 	
